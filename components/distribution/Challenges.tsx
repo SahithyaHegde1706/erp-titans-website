@@ -1,0 +1,62 @@
+import { Globe, Package, Truck, Users, BarChart2, Activity } from "lucide-react";
+
+export function Challenges() {
+  const blocks = [
+    {
+      title: "Multi-Warehouse Chaos",
+      desc: "Inventory visibility across locations is a nightmare. Stock levels are inaccurate, and transfers are manual.",
+      icon: Globe
+    },
+    {
+      title: "Order Fulfillment Delays",
+      desc: "Orders aren't automatically routed. Manual picking and packing processes cause constant errors.",
+      icon: Package
+    },
+    {
+      title: "Logistics Disconnects",
+      desc: "Shipping, tracking, and carrier management aren't integrated. Manual processes create delays.",
+      icon: Truck
+    },
+    {
+      title: "Customer Order Visibility",
+      desc: "Customers can't track orders in real-time. Your team can't provide accurate status updates.",
+      icon: Users
+    },
+    {
+      title: "Inventory Imbalances",
+      desc: "Slow-moving inventory piles up while fast-moving items are out of stock elsewhere.",
+      icon: BarChart2
+    },
+    {
+      title: "Reporting Gaps",
+      desc: "No visibility into warehouse performance or logistics costs. Decisions are based on guesswork.",
+      icon: Activity
+    }
+  ];
+
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-[1400px] mx-auto flex flex-col items-center">
+      <div className="text-center mb-16">
+        <span className="text-[#0f4c81] text-[11px] font-bold tracking-[0.2em] uppercase block mb-4">CHALLENGES</span>
+        <h2 className="text-4xl md:text-5xl font-bold text-[#0f4c81] mb-6">
+          Distribution Bottlenecks
+        </h2>
+        <p className="text-[17px] text-[#64748b]">
+          We fix the operational gaps that slow down your fulfillment and hurt customer satisfaction.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+        {blocks.map((block, idx) => (
+          <div key={idx} className="group bg-white rounded-[24px] p-8 border border-[#e5e7eb] shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-all duration-300 ease-out transform will-change-transform hover:-translate-y-2 hover:border-[#0f4c81] hover:shadow-[0_20px_50px_rgba(15,76,129,0.15)] hover:ring-4 hover:ring-[#0f4c81]/10">
+            <div className="w-12 h-12 bg-gray-100 rounded-[14px] flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[#0f4c81]">
+              <block.icon className="w-5 h-5 text-[#0f4c81] transition-colors duration-300 group-hover:text-white" />
+            </div>
+            <h3 className="text-[17px] font-bold text-[#0f4c81] mb-3">{block.title}</h3>
+            <p className="text-[14px] text-[#64748b] leading-relaxed">{block.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
