@@ -58,8 +58,6 @@ For production email delivery:
 3. Configure the production `RESEND_API_KEY`.
 4. Redeploy the application.
 
-See `HANDOVER.md` for detailed deployment instructions.
-
 ## License
 
 Private project developed for ERP Titans.
