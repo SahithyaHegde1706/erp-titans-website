@@ -12,7 +12,7 @@ export function Footer() {
               <Logo className="scale-75 origin-left" />
             </div>
             <p className="text-slate-500 text-[14px] leading-relaxed mb-4 max-w-[420px]">
-              Empowering real estate enterprises and property owners with intelligent ERP solutions designed to maximize operational efficiency and scale portfolio management.
+              Helping global SMEs recover from failed ERP implementations and unlock true business potential through expert optimization and recovery services.
             </p>
             <div className="flex">
               <a 
@@ -40,18 +40,13 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/features" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
-                  Features
-                </Link>
-              </li>
-              <li>
-                <Link href="/pricing" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
-                  Pricing
+                <Link href="/services" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  services
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
-                  About
+                  About Us
                 </Link>
               </li>
               <li>
@@ -68,22 +63,17 @@ export function Footer() {
             <ul className="space-y-4">
               <li>
                 <Link href="/solutions/property-management" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
-                  Property Management
+                  Manufacturing Solutions
                 </Link>
               </li>
               <li>
                 <Link href="/solutions/lease-automation" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
-                  Lease Automation
+                  Distribution & Logistics
                 </Link>
               </li>
               <li>
                 <Link href="/solutions/revenue-analytics" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
-                  Revenue Analytics
-                </Link>
-              </li>
-              <li>
-                <Link href="/solutions/smart-maintenance" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
-                  Smart Maintenance
+                 Cannabis Compliance
                 </Link>
               </li>
             </ul>
@@ -95,7 +85,7 @@ export function Footer() {
               <div>
                 <h4 className="text-slate-900 font-bold text-[12px] tracking-wider uppercase mb-3">Email Support</h4>
                 <a href="mailto:hello@erpestate.com" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
-                  hello@erpestate.com
+                  sales@erptitans.com
                 </a>
               </div>
               <div>
