@@ -3,68 +3,125 @@ import { Logo } from "@/components/ui/Logo";
 
 export function Footer() {
   return (
-    <footer className="bg-[#0A4A8B] text-white py-16">
+    <footer className="bg-slate-50 text-slate-900 py-16">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-10 mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-10 mb-12">
           {/* Branding */}
           <div className="col-span-1 flex flex-col -mt-4 md:-mt-8">
             <div className="mb-3 origin-left">
               <Logo className="scale-75 origin-left" />
             </div>
-            <p className="text-[#bfdbfe] text-lg leading-relaxed mb-4 max-w-[420px]">
-              Helping global SMEs recover from failed ERP implementations and unlock true business potential through expert optimization and recovery services.
+            <p className="text-slate-500 text-[14px] leading-relaxed mb-4 max-w-[420px]">
+              Empowering real estate enterprises and property owners with intelligent ERP solutions designed to maximize operational efficiency and scale portfolio management.
             </p>
             <div className="flex">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-8 h-8 rounded-full bg-slate-200/60 text-slate-700 hover:bg-slate-300/80 flex items-center justify-center transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
               </a>
             </div>
           </div>
 
-          {/* Company Links */}
+          {/* Column 2: Platform */}
           <div className="col-span-1">
-            <ul className="space-y-5">
-              <li><Link href="/" className="text-[15px] text-white hover:text-[#bfdbfe] transition-colors">Home</Link></li>
-              <li><Link href="/services" className="text-[15px] text-white hover:text-[#bfdbfe] transition-colors">Services</Link></li>
-              <li><Link href="/about" className="text-[15px] text-white hover:text-[#bfdbfe] transition-colors">About Us</Link></li>
-              <li><Link href="/contact" className="text-[15px] text-white hover:text-[#bfdbfe] transition-colors">Contact</Link></li>
+            <h4 className="text-slate-900 font-bold text-[12px] tracking-wider uppercase mb-4">Platform</h4>
+            <ul className="space-y-4">
+              <li>
+                <Link href="/" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/features" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  Features
+                </Link>
+              </li>
+              <li>
+                <Link href="/pricing" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  Pricing
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Industries */}
+          {/* Column 3: Solutions */}
           <div className="col-span-1">
-            <ul className="space-y-5">
-              <li><Link href="/industries/manufacturing" className="text-[15px] text-white hover:text-[#bfdbfe] transition-colors">Manufacturing Solutions</Link></li>
-              <li><Link href="/industries/distribution" className="text-[15px] text-white hover:text-[#bfdbfe] transition-colors">Distribution & Logistics</Link></li>
-              <li><Link href="/industries/cannabis" className="text-[15px] text-white hover:text-[#bfdbfe] transition-colors">Cannabis Compliance</Link></li>
+            <h4 className="text-slate-900 font-bold text-[12px] tracking-wider uppercase mb-4">Solutions</h4>
+            <ul className="space-y-4">
+              <li>
+                <Link href="/solutions/property-management" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  Property Management
+                </Link>
+              </li>
+              <li>
+                <Link href="/solutions/lease-automation" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  Lease Automation
+                </Link>
+              </li>
+              <li>
+                <Link href="/solutions/revenue-analytics" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  Revenue Analytics
+                </Link>
+              </li>
+              <li>
+                <Link href="/solutions/smart-maintenance" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  Smart Maintenance
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact Information */}
+          {/* Column 4: Contact & Support */}
           <div className="col-span-1">
-            <div className="space-y-8">
+            <div className="space-y-6">
               <div>
-                <h4 className="text-[11px] font-semibold text-[#bfdbfe] tracking-widest mb-3 uppercase">EMAIL SUPPORT</h4>
-                {/* TEMP TEST EMAIL - Replace before production */}
-                <a href="mailto:sales@erptitans.com" className="text-[15px] text-white hover:underline">sales@erptitans.com</a>
+                <h4 className="text-slate-900 font-bold text-[12px] tracking-wider uppercase mb-3">Email Support</h4>
+                <a href="mailto:hello@erpestate.com" className="text-[14px] text-slate-500 hover:text-slate-900 transition-colors">
+                  hello@erpestate.com
+                </a>
               </div>
               <div>
-                <h4 className="text-[11px] font-semibold text-[#bfdbfe] tracking-widest mb-3 uppercase">LOCATION</h4>
-                <p className="text-[15px] text-white">Calgary, Canada (Serving Globally)</p>
+                <h4 className="text-slate-900 font-bold text-[12px] tracking-wider uppercase mb-3">Location</h4>
+                <p className="text-[14px] text-slate-500 leading-relaxed">
+                  Calgary, Canada (Serving Globally)
+                </p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-[13px] text-[#bfdbfe]">
-          <p>© 2026 ERP Titans. All rights reserved.</p>
+        <div className="border-t border-slate-200 pt-6 flex flex-col md:flex-row justify-between items-center text-[13px]">
+          <p className="text-slate-400">© 2026 ERPESTATE. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
+            <Link href="/privacy" className="text-slate-400 hover:text-slate-900 transition-colors">
+              Privacy Policy
+            </Link>
+            <Link href="/terms" className="text-slate-400 hover:text-slate-900 transition-colors">
+              Terms of Service
+            </Link>
           </div>
         </div>
       </div>
     </footer>
   );
 }
+
