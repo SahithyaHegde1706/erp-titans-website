@@ -41,12 +41,12 @@ export function Challenges() {
           {challenges.map((challenge, index) => (
             <div
               key={index}
-              className="group bg-white rounded-[24px] p-8 text-left border border-[#e5e7eb] shadow-sm transition-all duration-300 ease-out transform will-change-transform hover:-translate-y-2 hover:border-[#0f4c81] hover:shadow-[0_20px_50px_rgba(15,76,129,0.15)] hover:ring-4 hover:ring-[#0f4c81]/10 aspect-square flex flex-col"
+              className="group bg-white rounded-[24px] p-8 text-left border border-[#e5e7eb] shadow-sm transition-all duration-300 ease-out hover:scale-[1.008] hover:shadow-md aspect-square flex flex-col"
             >
-              <div className="h-12 w-12 rounded-2xl bg-gray-100 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-[#0f4c81]">
-                <challenge.icon className="h-6 w-6 text-primary-blue transition-colors duration-300 group-hover:text-white" />
+              <div className="h-12 w-12 rounded-2xl bg-gray-100 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-slate-900/90">
+                <challenge.icon className="h-6 w-6 text-slate-800 transition-colors duration-300 group-hover:text-white" />
               </div>
-              <h4 className="text-xl font-bold text-primary-blue mb-3">{challenge.title}</h4>
+              <h4 className="text-xl font-bold text-slate-900 mb-3">{challenge.title}</h4>
               <p className="text-slate-500 text-sm leading-relaxed">{challenge.description}</p>
             </div>
           ))}
