@@ -58,10 +58,10 @@ export function Navbar() {
   }
 
   const getLinkClass = (path: string) => {
-    const isActive = path === "/" ? pathname === "/" : pathname.startsWith(path);
+    const isActive = path === "/" ? pathname === "/" : pathname?.startsWith(path);
     return isActive
-      ? "text-primary-blue font-semibold border-b-2 border-primary-blue pb-1"
-      : "text-slate-600 hover:text-primary-blue font-medium transition-colors";
+      ? "text-primary-blue font-semibold bg-[#e2f0fc]/60"
+      : "text-slate-600 hover:text-primary-blue hover:bg-[#e2f0fc]/20 transition-colors";
   };
 
   const closeMenus = () => {
@@ -96,19 +96,19 @@ export function Navbar() {
 
   return (
     <nav 
-      className={`fixed top-0 left-0 right-0 z-[99999] overflow-visible transition-all duration-300 ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 w-[92%] sm:w-[90%] max-w-[1200px] z-[99999] overflow-visible transition-all duration-300 rounded-full border backdrop-blur-md ${
         isScrolled 
-          ? "bg-white/90 backdrop-blur-md shadow-lg border-b border-slate-200" 
-          : "bg-transparent border-transparent shadow-none border-b-0"
+          ? "bg-white/75 border-slate-200/80 shadow-md" 
+          : "bg-white/75 border-slate-200/30"
       }`}
     >
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex justify-between items-center transition-all duration-300 ${isScrolled ? "h-20" : "h-24"}`}>
-          <div className={`flex items-center gap-3 transition-transform duration-300 origin-left ${isScrolled ? "scale-100" : "scale-[1.15]"}`}>
+      <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className={`flex justify-between items-center transition-all duration-300 ${isScrolled ? "h-16" : "h-16"}`}>
+          <div className={`flex items-center transition-transform duration-300 origin-left ${isScrolled ? "scale-[0.8]" : "scale-[0.85]"}`}>
             <Logo />
           </div>
 
-          <div className="hidden md:flex items-center space-x-12 h-full relative">
+          <div className="hidden md:flex items-center justify-center absolute left-1/2 -translate-x-1/2 space-x-8 lg:space-x-12 h-full">
             <NavLink href="/" path="/">Home</NavLink>
             <NavLink href="/services" path="/services">Services</NavLink>
             
@@ -138,7 +138,7 @@ export function Navbar() {
                     animate={{ opacity: 1, y: 0, x: "-50%" }}
                     exit={{ opacity: 0, y: 10, x: "-50%" }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-full left-1/2 mt-2 w-[260px] bg-white rounded-[20px] shadow-xl border border-slate-200 p-3 z-[999999] flex flex-col"
+                    className="absolute top-full left-1/2 mt-2 w-[260px] bg-white rounded-[20px] shadow-xl border border-slate-200/80 p-3 z-[999999] flex flex-col"
                   >
                     {INDUSTRY_LINKS.map((link) => (
                       <Link
@@ -160,71 +160,82 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            <Link href="/contact">
-              <Button className="hidden sm:inline-flex rounded-full shadow-lg transform transition duration-200 hover:-translate-y-1 bg-[#0f4c81] text-white px-6 py-3">
+            <Link href="/contact" className="hidden sm:inline-flex">
+              <Button className="rounded-full shadow-[0_4px_14px_rgba(15,76,129,0.25)] hover:shadow-[0_6px_20px_rgba(15,76,129,0.35)] transform transition duration-200 hover:-translate-y-0.5 bg-[#0f4c81] hover:bg-[#0c3d69] text-white px-6 h-10 text-sm font-semibold border-none">
                 Book Free Audit
               </Button>
             </Link>
             <button
               type="button"
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-slate-600 hover:text-primary-blue hover:bg-slate-100 transition-colors"
+              className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full text-slate-600 hover:text-primary-blue hover:bg-slate-50 border border-slate-200/40 shadow-sm transition-all duration-200"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
               aria-expanded={isMobileMenuOpen}
               aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
-              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {isMobileMenuOpen && (
-        <div ref={mobileMenuRef} className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-200 shadow-lg z-[99999]">
-          <div className="max-w-[1400px] mx-auto px-4 py-4 space-y-1">
-            <Link href="/" className={`block px-4 py-3 rounded-lg ${getLinkClass("/")}`} onClick={closeMenus}>
-              Home
-            </Link>
-            <Link href="/services" className={`block px-4 py-3 rounded-lg ${getLinkClass("/services")}`} onClick={closeMenus}>
-              Services
-            </Link>
-            <button
-              type="button"
-              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg ${pathname.startsWith("/industries") ? "text-primary-blue font-semibold" : "text-slate-600"} hover:text-primary-blue font-medium`}
-              onClick={(e) => {
-                e.stopPropagation();
-                setIsIndustriesOpen((prev) => !prev);
-              }}
-              aria-expanded={isIndustriesOpen}
-            >
-              <span>Industries</span>
-              <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isIndustriesOpen ? "rotate-180" : ""}`} />
-            </button>
-            {isIndustriesOpen && (
-              <div className="ml-4 space-y-1 border-l-2 border-slate-100 pl-2">
-                {INDUSTRY_LINKS.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="block px-4 py-2.5 text-[#0f4c81] font-semibold hover:bg-[#f1f5f9] rounded-lg"
-                    onClick={closeMenus}
-                  >
-                    {link.label === 'Manufacturing' ? 'Manufacturing' : link.label === 'Distribution' ? 'Distribution' : 'Cannabis'}
-                  </Link>
-                ))}
-              </div>
-            )}
-            <Link href="/about" className={`block px-4 py-3 rounded-lg ${getLinkClass("/about")}`} onClick={closeMenus}>
-              About
-            </Link>
-            <Link href="/contact" className={`block px-4 py-3 rounded-lg ${getLinkClass("/contact")}`} onClick={closeMenus}>
-              Contact
-            </Link>
-            <Link href="/contact" onClick={closeMenus} className="block mt-2 sm:hidden">
-              <Button className="w-full">Book Free Audit</Button>
-            </Link>
-          </div>
-        </div>
-      )}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            ref={mobileMenuRef} 
+            initial={{ opacity: 0, y: 12, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 12, scale: 0.98 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="md:hidden absolute top-[calc(100%+12px)] left-0 right-0 bg-white/95 backdrop-blur-md border border-slate-200/80 shadow-xl rounded-2xl z-[99999] overflow-hidden"
+          >
+            <div className="px-4 py-4 space-y-1.5">
+              <Link href="/" className={`block px-4 py-2.5 rounded-xl ${getLinkClass("/")}`} onClick={closeMenus}>
+                Home
+              </Link>
+              <Link href="/services" className={`block px-4 py-2.5 rounded-xl ${getLinkClass("/services")}`} onClick={closeMenus}>
+                Services
+              </Link>
+              <button
+                type="button"
+                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-xl ${pathname?.startsWith("/industries") ? "text-primary-blue font-semibold bg-[#e2f0fc]/60" : "text-slate-600"} hover:text-primary-blue hover:bg-[#e2f0fc]/20 font-medium transition-colors`}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setIsIndustriesOpen((prev) => !prev);
+                }}
+                aria-expanded={isIndustriesOpen}
+              >
+                <span>Industries</span>
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${isIndustriesOpen ? "rotate-180" : ""}`} />
+              </button>
+              {isIndustriesOpen && (
+                <div className="ml-4 space-y-1 border-l-2 border-slate-100 pl-2">
+                  {INDUSTRY_LINKS.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      className="block px-4 py-2.5 text-[#0f4c81] font-semibold hover:bg-[#f1f5f9] rounded-lg"
+                      onClick={closeMenus}
+                    >
+                      {link.label === 'Manufacturing' ? 'Manufacturing' : link.label === 'Distribution' ? 'Distribution' : 'Cannabis'}
+                    </Link>
+                  ))}
+                </div>
+              )}
+              <Link href="/about" className={`block px-4 py-2.5 rounded-xl ${getLinkClass("/about")}`} onClick={closeMenus}>
+                About
+              </Link>
+              <Link href="/contact" className={`block px-4 py-2.5 rounded-xl ${getLinkClass("/contact")}`} onClick={closeMenus}>
+                Contact
+              </Link>
+              <Link href="/contact" onClick={closeMenus} className="block mt-2 sm:hidden">
+                <Button className="w-full bg-[#0f4c81] hover:bg-[#0c3d69] text-white rounded-full shadow-[0_4px_12px_rgba(15,76,129,0.2)]">
+                  Book Free Audit
+                </Button>
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
