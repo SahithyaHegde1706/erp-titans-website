@@ -28,6 +28,7 @@ function Counter({ from, to, duration = 2, suffix = "", decimals = 0 }: { from: 
 
   useEffect(() => {
     if (shouldReduceMotion) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setValue(to);
       return;
     }
@@ -52,26 +53,26 @@ function Counter({ from, to, duration = 2, suffix = "", decimals = 0 }: { from: 
 
 const sidebarItems: SidebarItem[] = [
   { label: "Dashboard", icon: LayoutDashboard },
-  { label: "Properties", icon: Building2 },
+  { label: "Diagnostics", icon: Search },
+  { label: "Deployments", icon: Layers3 },
+  { label: "Cost Recovery", icon: CircleDollarSign },
+  { label: "Hotfixes", icon: Wrench },
+  { label: "Audits", icon: FileText },
+  { label: "Performance", icon: LineChart },
   { label: "Clients", icon: UserRound },
-  { label: "Leases", icon: Layers3 },
-  { label: "Payments", icon: CircleDollarSign },
-  { label: "Maintenance", icon: Wrench },
-  { label: "Reports", icon: FileText },
-  { label: "Analytics", icon: LineChart },
 ] as const;
 
 const quickStats = [
-  { title: "Active Units", value: 424, suffix: "", decimals: 0, tone: "text-slate-900", accent: "bg-purple-600/10 text-purple-600" },
-  { title: "Leases Renewing", value: 324, suffix: "", decimals: 0, tone: "text-slate-900", accent: "bg-slate-100 text-slate-700" },
-  { title: "Monthly Revenue", value: 456.54, suffix: "k", decimals: 2, tone: "text-slate-900", accent: "bg-emerald-50 text-emerald-600" },
-  { title: "Occupancy Rate", value: 78.8, suffix: "%", decimals: 1, tone: "text-slate-900", accent: "bg-amber-50 text-amber-600" },
+  { title: "Critical Issues Fixed", value: 424, suffix: "", decimals: 0, tone: "text-slate-900", accent: "bg-purple-600/10 text-purple-600" },
+  { title: "Active Deployments", value: 324, suffix: "", decimals: 0, tone: "text-slate-900", accent: "bg-slate-100 text-slate-700" },
+  { title: "Recovered Leakage", value: 456.54, suffix: "k", decimals: 2, tone: "text-slate-900", accent: "bg-emerald-50 text-emerald-600" },
+  { title: "System Stability", value: 99.8, suffix: "%", decimals: 1, tone: "text-slate-900", accent: "bg-amber-50 text-amber-600" },
 ] as const;
 
 const activityRows = [
-  { label: "New lease signed for property #3245", meta: "2 min ago" },
-  { label: "Maintenance request assigned to field team", meta: "19 min ago" },
-  { label: "Client payment received and reconciled", meta: "1 hour ago" },
+  { label: "Database query bottleneck resolved on deployment #3245", meta: "2 min ago" },
+  { label: "Diagnostics run completed for inventory syncing", meta: "19 min ago" },
+  { label: "Automated API reconciliation audit completed", meta: "1 hour ago" },
 ];
 
 export function DashboardShowcase() {
@@ -105,14 +106,14 @@ export function DashboardShowcase() {
           <div className="flex-1" />
           <div className="hidden w-full max-w-90 items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs text-slate-400 sm:flex">
             <Search className="h-3.5 w-3.5" />
-            Search for a property, lease, or client
+            Search for an audit, deployment, or system issue
           </div>
           <div className="flex-1" />
           <div className="hidden items-center gap-2 sm:flex">
             <div className="h-8 w-8 rounded-full bg-slate-200/80" />
             <div className="text-right">
               <p className="text-xs font-medium text-slate-900">Johan</p>
-              <p className="text-[10px] text-slate-500">Property admin</p>
+              <p className="text-[10px] text-slate-500">ERP Architect</p>
             </div>
           </div>
         </div>
@@ -124,8 +125,8 @@ export function DashboardShowcase() {
                 <Building2 className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-slate-900">Property Suite</p>
-                <p className="text-xs text-slate-500">Operational control</p>
+                <p className="text-sm font-semibold text-slate-900">Titan Recovery</p>
+                <p className="text-xs text-slate-500">Diagnostics & Sync</p>
               </div>
             </div>
 
@@ -136,9 +137,8 @@ export function DashboardShowcase() {
                 return (
                   <div
                     key={item.label}
-                    className={`flex items-center gap-3 rounded-full px-4 py-3 text-sm font-medium transition-colors ${
-                      isActive ? "bg-purple-50 text-slate-900" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
-                    }`}
+                    className={`flex items-center gap-3 rounded-full px-4 py-3 text-sm font-medium transition-colors ${isActive ? "bg-purple-50 text-slate-900" : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                      }`}
                   >
                     <item.icon className={`h-4 w-4 ${isActive ? "text-purple-600" : "text-slate-400"}`} />
                     <span>{item.label}</span>
@@ -151,7 +151,7 @@ export function DashboardShowcase() {
             <div className="mt-auto rounded-3xl border border-slate-200 bg-slate-50 p-4">
               <div className="mb-3 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
                 <ShieldCheck className="h-4 w-4 text-purple-600" />
-                Portfolio health
+                System stability
               </div>
               <div className="h-2 rounded-full bg-slate-200">
                 <motion.div
@@ -162,15 +162,15 @@ export function DashboardShowcase() {
                   className="h-2 rounded-full bg-purple-600"
                 />
               </div>
-              <p className="mt-3 text-sm text-slate-500">Occupancy, payments, and maintenance are all in sync.</p>
+              <p className="mt-3 text-sm text-slate-500">Integrations, databases, and sync queues are all healthy.</p>
             </div>
           </aside>
 
           <div className="bg-white px-5 py-5 sm:px-6 sm:py-6 lg:px-7 lg:py-7">
             <div className="mb-6 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
               <div>
-                <p className="text-sm text-slate-500">Good morning chirag</p>
-                <h2 className="mt-1 text-2xl font-semibold tracking-[-0.03em] text-slate-900 sm:text-[32px]">Dashboard Overview</h2>
+                <p className="text-sm text-slate-500">Good morning Chirag</p>
+                <h2 className="mt-1 text-2xl font-semibold tracking-[-0.03em] text-slate-900 sm:text-[32px]">Diagnostics Console</h2>
               </div>
               <div className="flex flex-wrap items-center gap-3">
                 <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-600">
@@ -220,10 +220,10 @@ export function DashboardShowcase() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Sales over view</p>
-                    <h3 className="mt-1 text-lg font-semibold text-slate-900">Property flow and revenue distribution</h3>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Sync Flow overview</p>
+                    <h3 className="mt-1 text-lg font-semibold text-slate-900">Data synchronization and API call distribution</h3>
                   </div>
-                  <div className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-500">This Year</div>
+                  <div className="rounded-full border border-slate-200 px-2 py-1 text-xs text-slate-500">2026</div>
                 </div>
 
                 <div className="mt-5 grid gap-3 sm:grid-cols-3">
@@ -231,6 +231,7 @@ export function DashboardShowcase() {
                     { month: "August", value: 9 },
                     { month: "September", value: 7 },
                     { month: "October", value: 8 },
+                    { month: "November", value: 5 },
                   ].map((series) => (
                     <div key={series.month} className="rounded-2xl bg-slate-50 p-4">
                       <p className="text-xs font-medium text-slate-500">{series.month}</p>
@@ -256,8 +257,8 @@ export function DashboardShowcase() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Property status</p>
-                    <h3 className="mt-1 text-lg font-semibold text-slate-900">Occupancy and collection mix</h3>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Deployment status</p>
+                    <h3 className="mt-1 text-lg font-semibold text-slate-900">Stability and integration mix</h3>
                   </div>
                   <div className="rounded-full border border-slate-200 px-3 py-1 text-xs text-slate-500">This Month</div>
                 </div>
@@ -274,10 +275,10 @@ export function DashboardShowcase() {
 
                   <div className="mt-5 space-y-3">
                     {[
-                      { label: "Leased", value: 258, color: "bg-purple-600" },
-                      { label: "Under contract", value: 89, color: "bg-amber-400" },
-                      { label: "Vacant", value: 42, color: "bg-slate-400" },
-                      { label: "Repair", value: 34, color: "bg-sky-500" },
+                      { label: "Healthy", value: 258, color: "bg-purple-600" },
+                      { label: "Sync Lagging", value: 89, color: "bg-amber-400" },
+                      { label: "Configuration Misaligned", value: 42, color: "bg-slate-400" },
+                      { label: "Critical Hotfixes Pending", value: 34, color: "bg-rose-500" },
                     ].map((row) => (
                       <div key={row.label} className="flex items-center gap-3 text-sm">
                         <span className={`h-2.5 w-2.5 rounded-full ${row.color}`} />
@@ -299,10 +300,10 @@ export function DashboardShowcase() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                  className="rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
+                className="rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-slate-900">Your task</h3>
+                  <h3 className="text-sm font-semibold text-slate-900">Next Audit Task</h3>
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-500">Today</span>
                 </div>
                 <div className="mt-4 flex items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 p-3">
@@ -310,8 +311,8 @@ export function DashboardShowcase() {
                     <UserRound className="h-4 w-4" />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-slate-900">John chirag</p>
-                    <p className="text-xs text-slate-500">Property #1234</p>
+                    <p className="text-sm font-medium text-slate-900">Verify API token sync with SAP</p>
+                    <p className="text-xs text-slate-500">Integration #1234</p>
                   </div>
                 </div>
               </motion.div>
@@ -321,7 +322,7 @@ export function DashboardShowcase() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                  className="rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
+                className="rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
               >
                 <div className="flex items-center justify-between">
                   <h3 className="text-sm font-semibold text-slate-900">Recent activity</h3>
@@ -345,15 +346,15 @@ export function DashboardShowcase() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                  className="rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
+                className="rounded-3xl border border-slate-200 bg-white p-5 shadow-[0_1px_2px_rgba(15,23,42,0.04)]"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-slate-900">Upcoming events</h3>
+                  <h3 className="text-sm font-semibold text-slate-900">Next Sync Window</h3>
                   <CalendarDays className="h-4 w-4 text-slate-400" />
                 </div>
                 <div className="mt-4 rounded-2xl bg-slate-50 p-4">
-                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">August 2025</p>
-                  <p className="mt-2 text-sm text-slate-600">Walk-throughs, renewals, and payment follow-ups.</p>
+                  <p className="text-xs uppercase tracking-[0.18em] text-slate-500">Scheduled Audits</p>
+                  <p className="mt-2 text-sm text-slate-600">Automated sync runs, database index rebuilds, and API token rotations.</p>
                 </div>
               </motion.div>
             </div>
