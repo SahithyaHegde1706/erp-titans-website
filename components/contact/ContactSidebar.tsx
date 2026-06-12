@@ -32,7 +32,7 @@ export function ContactSidebar({ activeTab = "schedule" }: { activeTab?: "messag
           <h3 className="text-[15px] font-bold text-[#0f4c81]">Mountain Time (Calgary)</h3>
         </div>
         <p className="text-[14px] text-[#64748b] leading-relaxed">
-          {activeTab === "message" 
+          {activeTab === "message"
             ? "We typically respond within 24 hours. For urgent recovery, please mention 'URGENT' in your message."
             : "All appointments are scheduled in Calgary Time (Mountain Time). Please adjust if you are in a different zone."}
         </p>
